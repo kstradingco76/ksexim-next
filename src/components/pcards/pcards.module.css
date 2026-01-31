@@ -1,0 +1,229 @@
+.outerContainer {
+  padding: 3rem 0 3rem 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: transparent;
+  position: relative;
+}
+
+.container {
+  width: 90vw;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.cardsWrapper {
+  display: flex;
+  height: 100%;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.card {
+  flex: 0 0 calc(90vw / 3 - 1rem / 3); /* Adjust for gap */
+  height: 100%;
+  perspective: 1000px; /* Needed for 3D effect */
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.cardFront:hover,
+.cardBack:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cardImage {
+  width: 100%;
+  height: 65%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  margin: 0;
+  text-align: center;
+  color: #1a3c5e;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cardDescription {
+  margin: 0.75rem 0 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.cardLink {
+  margin-top: 0.75rem;
+  color: #0a66c2;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.cardLink:hover {
+  color: #054a8c;
+  text-decoration: underline;
+}
+
+.sectionTitle {
+  margin: 0 0 2rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a3c5e;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Responsive Design for Tablets (1024px and below) */
+@media (max-width: 1024px) {
+  .outerContainer {
+    height: auto;
+    padding: 2.5rem 0;
+    min-height: 50vh;
+  }
+
+  .container {
+    width: 90vw;
+    height: 350px;
+  }
+
+  .card {
+    flex: 0 0 calc(90vw / 2 - 1rem / 2);
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+    left: 0;
+    top: -3rem;
+  }
+}
+
+/* Responsive Design for Mobile (768px and below) */
+@media (max-width: 768px) {
+  .outerContainer {
+    height: auto;
+    padding: 2rem 0;
+    min-height: auto;
+  }
+
+  .container {
+    width: 100vw;
+    height: 300px;
+    border-radius: 0;
+  }
+
+  .cardsWrapper {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .card {
+    flex: 0 0 calc(100vw / 1.5 - 0.5rem);
+  }
+
+  .cardImage {
+    height: 50%;
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .cardDescription {
+    font-size: 0.8rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+    left: 0.5rem;
+    top: -2.5rem;
+  }
+}
+
+/* Responsive Design for Mobile Small (480px and below) */
+@media (max-width: 480px) {
+  .outerContainer {
+    height: auto;
+    padding: 1.5rem 0;
+  }
+
+  .container {
+    width: 95vw;
+    height: 250px;
+    max-height: 250px;
+  }
+
+  .cardsWrapper {
+    gap: 0.3rem;
+    padding: 0.3rem;
+  }
+
+  .card {
+    flex: 0 0 calc(95vw - 0.3rem);
+  }
+
+  .cardImage {
+    height: 45%;
+  }
+
+  .cardTitle {
+    margin: 0.3rem 0;
+    font-size: 0.85rem;
+  }
+
+  .cardDescription {
+    font-size: 0.7rem;
+    margin: 0;
+  }
+
+  .cardLink {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 0.95rem;
+    left: 0.5rem;
+    top: 0.5rem;
+  }
+}

@@ -1,25 +1,29 @@
 .container {
-  background-color: #8ac341;
+  background-color: #0b2e13; /* Dark green theme */
   color: #ffffff;
-  font-family: Arial, sans-serif;
-  padding: 20px;
+  font-family: inherit;
+  padding: 4rem 2rem 2rem 2rem;
 }
 
 .sections {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  gap: 2rem;
 }
 
 .section {
-  width: 23%;
+  flex: 1;
 }
 
 .section h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ffffff;
-  padding-bottom: 5px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .section ul {
@@ -28,26 +32,40 @@
 }
 
 .section ul li {
-  margin-bottom: 5px;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #bdc3c7;
+  transition: color 0.3s ease;
+}
+
+.section ul li:hover {
+  color: #ffffff;
 }
 
 .section p {
-  margin: 5px 0;
+  margin: 0.75rem 0;
+  line-height: 1.6;
+  color: #bdc3c7;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .section a {
-  color: #ffffff;
+  color: #bdc3c7;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .section a:hover {
-  text-decoration: underline;
+  color: #ffffff;
 }
 
 .bottom {
   text-align: center;
-  border-top: 1px solid #ffffff;
-  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .bottom p {
@@ -61,4 +79,68 @@
 
 .bottom a:hover {
   text-decoration: underline;
+}
+
+/* Responsive Design for Tablets (768px and below) */
+@media (max-width: 768px) {
+  .sections {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section {
+    width: 100%;
+  }
+
+  .section h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .section ul li {
+    margin-bottom: 3px;
+  }
+
+  .section p {
+    margin: 3px 0;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}
+
+/* Responsive Design for Mobile (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .sections {
+    gap: 15px;
+  }
+
+  .section h4 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .section ul li {
+    margin-bottom: 2px;
+    font-size: 0.9rem;
+  }
+
+  .section p {
+    margin: 2px 0;
+    font-size: 0.9rem;
+  }
+
+  .bottom {
+    padding-top: 8px;
+  }
+
+  .bottom p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+  }
 }

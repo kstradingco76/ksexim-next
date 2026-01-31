@@ -1,21 +1,64 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import styles from "./page.module.css";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    mobileNumber: "",
+    message: "",
+  });
+  const [status, setStatus] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setFormData({
+          fullName: "",
+          email: "",
+          mobileNumber: "",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setStatus("error");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.location}>
           <h2>Location</h2>
-          <p>123 Main Street, City, Country</p>
+          <p>Industrial Estate, Jalandhar, Punjab - 144001</p>
         </div>
         <div className={styles.callus}>
           <h2>Call Us</h2>
-          <p>+123 456 7890</p>
+          <p>+91 84370 20131</p>
         </div>
         <div className={styles.mailus}>
           <h2>Mail Us</h2>
-          <p>info@example.com</p>
+          <p>kstradingco76@gmail.com</p>
         </div>
       </div>
       <div className={styles.map_wrapper}>
@@ -29,7 +72,7 @@ const Contact = () => {
           ></iframe>
         </div>
         <div className={styles.enquiryForm}>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <div>
               <h2>
                 GET IN <span className={styles.color}>TOUCH</span>
@@ -39,6 +82,8 @@ const Contact = () => {
                 id="fullName"
                 name="fullName"
                 placeholder="Full Name"
+                value={formData.fullName}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -48,6 +93,8 @@ const Contact = () => {
                 id="email"
                 name="email"
                 placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -57,25 +104,31 @@ const Contact = () => {
                 id="mobileNumber"
                 name="mobileNumber"
                 placeholder="Mobile Number"
+                value={formData.mobileNumber}
+                onChange={handleChange}
                 required
               />
             </div>
             <div>
               <textarea
                 rows={5}
-                // cols={15}
                 id="message"
                 name="message"
                 placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
                 required
               ></textarea>
             </div>
             <button
               className={`${styles.submit} ${styles.smallButton}`}
               type="submit"
+              disabled={status === "submitting"}
             >
-              Submit
+              {status === "submitting" ? "Submitting..." : "Submit"}
             </button>
+            {status === "success" && <p className={styles.successMsg}>Thank you! Your message has been sent.</p>}
+            {status === "error" && <p className={styles.errorMsg}>Something went wrong. Please try again.</p>}
           </form>
         </div>
       </div>

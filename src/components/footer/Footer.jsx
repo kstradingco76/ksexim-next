@@ -9,7 +9,7 @@ const Footer = () => {
         <div className={styles.section}>
           <h4>Product Range</h4>
           <ul>
-            <li>Guar Gum Splits</li>
+            <li>Guar Gum Powder</li>
             <li>Xanthan Gum Powder</li>
             <li>Tragacanth Gum Powder</li>
             <li>Guar Meal</li>
@@ -22,13 +22,10 @@ const Footer = () => {
         <div className={styles.section}>
           <h4>Certificates</h4>
           <ul>
-            <li>ISO 22000:2005</li>
-            <li>GMP Certificate</li>
-            <li>Kosher Certificate</li>
-            <li>Halal Certificate</li>
-            <li>DIOXIN Test Reports</li>
-            <li>FORMALDEHYDE and PENTA CHLORO PHENOL (mg/kg)</li>
-            <li>Test Reports</li>
+            <li>FSSAI Certificate</li>
+            <li>APEDA Certificate</li>
+            <li>IEC Certificate</li>
+            <li>GST Certificate</li>
           </ul>
         </div>
 
@@ -41,19 +38,15 @@ const Footer = () => {
         <div className={styles.section}>
           <h4>Contact Us</h4>
           <p>
-            <strong>Address:</strong> Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Enim, omnis!
-          </p>
+            <strong>Address:</strong> Industrial Estate, Jalandhar, Punjab - 144001          </p>
           <p>
             <strong>Phone:</strong>{" "}
-            <a href="tel:++918437020131">+91-84370 20131</a>
+            <a href="tel:+91-8437020131">+91-84370 20131</a>
           </p>
 
           <p>
             <strong>Email:</strong>{" "}
-            <a href="mailto:info@kayessinternationals.com">
-              info@kayessinternationals.com
-            </a>
+            <a href="mailto:kstradingco76@gmail.com">kstradingco76@gmail.com</a>
           </p>
         </div>
       </div>

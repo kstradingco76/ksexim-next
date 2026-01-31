@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./navbar.module.css";
 import Image from "next/image";
-import logo from "@/public/images/Kayess.png";
 import { FaBars, FaTimes } from "react-icons/fa"; // Import mobile open/close icons
 // import ThemeToggle from "../themeToggle/ThemeToggle";
 
@@ -14,7 +13,6 @@ const links = [
   { id: 4, title: "Certificates", url: "/certificates" },
   { id: 5, title: "Contact", url: "/contact" },
 ];
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,7 +24,7 @@ const Navbar = () => {
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>
         <Image
-          src={logo}
+          src="/images/logo.png"
           width={150}
           height={150}
           alt="Kayess Internationals"

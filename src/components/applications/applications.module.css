@@ -1,0 +1,112 @@
+/* Applications Component Styles */
+.container {
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #1a3c5e;
+}
+
+.applicationsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.applicationItem {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.applicationItem:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.applicationItem h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.applicationItem p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive Design for Tablets (768px and below) */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .applicationsList {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .applicationItem {
+    padding: 1rem;
+  }
+
+  .applicationItem h3 {
+    font-size: 1.1rem;
+  }
+
+  .applicationItem p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive Design for Mobile (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .applicationsList {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .applicationItem {
+    padding: 0.75rem;
+  }
+
+  .applicationItem h3 {
+    font-size: 1rem;
+  }
+
+  .applicationItem p {
+    font-size: 0.85rem;
+  }
+}

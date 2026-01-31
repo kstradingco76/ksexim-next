@@ -1,105 +1,83 @@
-import styles from "./page.module.css";
-import Image from "next/image";
-import certificate1 from "@/public/images/certificate1.png";
-import certificate2 from "@/public/images/certificate2.jpg";
+"use client";
 
-// Array of certificate objects
+import { useState } from "react";
+import styles from "./page.module.css";
+
 const certificates = [
   {
-    src: certificate1,
-    alt: "Certificate 1",
-    title: "BRCGS Certificate",
-    description: `
-      The Isoqar Alcumus Certification is one of the most accredited, recognized,
-      and respected certifications concerning the scope of activities carried out
-      by Agro Gums. It vouches for the processing as well as the primary packaging
-      in line with the directives and aligns with the quality control and the product
-      safety of the Guar Gum manufactured.
-    `,
-    additionalInfo: `
-      Agro Gums has successfully received A+ BRCGS (Brand Reputation Compliance Global Standards)
-      accreditation for Food Standard in the category of 15 – Dried food and ingredients, certified
-      from ALCUMUS ISOQAR Limited for producing guar gum powder and packaging it in HDPE poly woven
-      paper bags, multi-layered paper bags with an inner LDPE liner, and fabric laminated jumbo bags.
-    `,
-    link: "/",
+    id: 1,
+    name: "APEDA",
+    year: "Agricultural & Processed Food Products Export Development Authority",
+    img: "/images/APEDA_Certificate.jpg",
   },
   {
-    src: certificate2,
-    alt: "Certificate 2",
-    title: "ISO Certification",
-    description: `
-      ISO certification indicates a commitment to quality standards and adherence
-      to stringent industry guidelines. This certification reinforces the credibility
-      of our production processes and our dedication to delivering consistent and reliable products.
-    `,
-    additionalInfo: `
-      Our ISO certification covers the entire manufacturing process, from raw material sourcing
-      to final product packaging, ensuring that our products meet international quality standards.
-    `,
-    link: "/",
+    id: 2,
+    name: "FSSAI",
+    year: "Food Safety and Standards Authority of India",
+    img: "/images/FSSAI_Certificate.jpg",
   },
   {
-    src: certificate2,
-    alt: "Certificate 2",
-    title: "ISO Certification",
-    description: `
-      ISO certification indicates a commitment to quality standards and adherence
-      to stringent industry guidelines. This certification reinforces the credibility
-      of our production processes and our dedication to delivering consistent and reliable products.
-    `,
-    additionalInfo: `
-      Our ISO certification covers the entire manufacturing process, from raw material sourcing
-      to final product packaging, ensuring that our products meet international quality standards.
-    `,
-    link: "/",
+    id: 3,
+    name: "IEC",
+    year: "International Export Certification",
+    img: "/images/IEC_Certificate.jpg",
   },
   {
-    src: certificate2,
-    alt: "Certificate 2",
-    title: "ISO Certification",
-    description: `
-      ISO certification indicates a commitment to quality standards and adherence
-      to stringent industry guidelines. This certification reinforces the credibility
-      of our production processes and our dedication to delivering consistent and reliable products.
-    `,
-    additionalInfo: `
-      Our ISO certification covers the entire manufacturing process, from raw material sourcing
-      to final product packaging, ensuring that our products meet international quality standards.
-    `,
-    link: "/",
+    id: 4,
+    name: "MSME",
+    year: "Micro, Small & Medium Enterprises",
+    img: "/images/MSME_Certificate.jpg",
   },
 ];
 
-const CertificateSection = () => {
-  return (
-    <section className={styles.certificateSection}>
-      {certificates.map((certificate, index) => (
-        <div key={index} className={styles.certificateContainer}>
-          <div className={styles.certificateImage}>
-            <Image
-              src={certificate.src}
-              alt={certificate.alt}
-              layout="responsive"
-            />
-          </div>
-          <div className={styles.certificateContent}>
-            <h2>{certificate.title}</h2>
-            <p>{certificate.description}</p>
-            <p>{certificate.additionalInfo}</p>
-            <a
-              href={certificate.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit the directory for more information.
-            </a>
-          </div>
-          {/* <hr style={{ borderTop: "1px solid #0d3502", width: "100%" }} /> */}
-        </div>
-      ))}
-    </section>
-  );
-};
+export default function CertificatesPage() {
+  const [selectedCert, setSelectedCert] = useState(null);
 
-export default CertificateSection;
+  const openModal = (cert) => {
+    setSelectedCert(cert);
+  };
+
+  const closeModal = () => {
+    setSelectedCert(null);
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Our Certificates</h1>
+      <p className={styles.subtitle}>Quality Certifications & Awards</p>
+
+      <div className={styles.certificatesGrid}>
+        {certificates.map((cert) => (
+          <div
+            key={cert.id}
+            className={styles.certificateCard}
+            onClick={() => openModal(cert)}
+          >
+            <img src={cert.img} alt={cert.name} />
+            <div className={styles.cardInfo}>
+              <h3>{cert.name}</h3>
+              <p>{cert.year}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {selectedCert && (
+        <div className={styles.modal} onClick={handleBackdropClick}>
+          <div className={styles.modalContent}>
+            <span className={styles.closeBtn} onClick={closeModal}>
+              ×
+            </span>
+            <img src={selectedCert.img} alt={selectedCert.name} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
