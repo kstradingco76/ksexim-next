@@ -141,89 +141,51 @@
 @media (max-width: 768px) {
   .outerContainer {
     height: auto;
-    padding: 2rem 0;
-    min-height: auto;
+    padding: 3rem 1rem;
   }
 
   .container {
-    width: 100vw;
-    height: 300px;
-    border-radius: 0;
+    width: 100%;
+    height: auto; /* Allow content to dictate height */
+    overflow: visible; /* Disable GSAP overflow hidden */
   }
 
   .cardsWrapper {
-    gap: 0.5rem;
-    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr; /* Stack vertically */
+    gap: 1.5rem;
+    padding: 0;
+    height: auto;
+    transform: none !important; /* Force reset GSAP transforms */
   }
 
   .card {
-    flex: 0 0 calc(100vw / 1.5 - 0.5rem);
+    flex: none;
+    width: 100%;
+    height: 400px; /* Fixed height for consistency on mobile */
   }
 
   .cardImage {
-    height: 50%;
+    height: 200px;
   }
 
   .cardTitle {
-    font-size: 0.95rem;
-  }
-
-  .cardDescription {
-    font-size: 0.8rem;
-    margin: 0.5rem 0 0 0;
+    font-size: 1.2rem;
   }
 
   .sectionTitle {
-    font-size: 1.3rem;
-    left: 0.5rem;
-    top: -2.5rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
 /* Responsive Design for Mobile Small (480px and below) */
 @media (max-width: 480px) {
-  .outerContainer {
-    height: auto;
-    padding: 1.5rem 0;
-  }
-
-  .container {
-    width: 95vw;
-    height: 250px;
-    max-height: 250px;
-  }
-
-  .cardsWrapper {
-    gap: 0.3rem;
-    padding: 0.3rem;
-  }
-
   .card {
-    flex: 0 0 calc(95vw - 0.3rem);
-  }
-
-  .cardImage {
-    height: 45%;
-  }
-
-  .cardTitle {
-    margin: 0.3rem 0;
-    font-size: 0.85rem;
-  }
-
-  .cardDescription {
-    font-size: 0.7rem;
-    margin: 0;
-  }
-
-  .cardLink {
-    margin-top: 0.5rem;
-    font-size: 0.75rem;
+    height: 380px;
   }
 
   .sectionTitle {
-    font-size: 0.95rem;
-    left: 0.5rem;
-    top: 0.5rem;
+    font-size: 1.8rem;
   }
 }

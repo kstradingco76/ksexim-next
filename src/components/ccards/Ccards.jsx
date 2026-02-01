@@ -21,8 +21,11 @@ export default function Ccards() {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      if (!outerRef.current || !containerRef.current || !wrapperRef.current) return;
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+      if (!outerRef.current || !containerRef.current || !wrapperRef.current)
+        return;
 
       const cards = wrapperRef.current.children;
       const totalWidth = Array.from(cards).reduce(
@@ -45,9 +48,9 @@ export default function Ccards() {
           invalidateOnRefresh: true,
         },
       });
-    }, outerRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   return (

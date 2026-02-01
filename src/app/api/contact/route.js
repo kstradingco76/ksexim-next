@@ -59,8 +59,23 @@ export async function POST(request) {
   }
 }
 
+import { jwtVerify } from "jose";
+
 export async function GET(request) {
   try {
+    // Verify authentication
+    const token = request.cookies.get("admin_token")?.value;
+    if (!token) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+    }
+
+    const secret = new TextEncoder().encode(process.env.JWT_SECRET || "default_secret_key");
+    try {
+      await jwtVerify(token, secret);
+    } catch (e) {
+      return NextResponse.json({ success: false, error: "Invalid token" }, { status: 401 });
+    }
+
     await dbConnect();
 
     // Parse query parameters

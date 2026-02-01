@@ -155,6 +155,10 @@
     font-size: 2rem;
   }
 
+  .sub.title {
+    font-size: 2.2rem;
+  }
+
   .subtitle {
     font-size: 1rem;
   }
@@ -171,6 +175,10 @@
 
   .title {
     font-size: 1.6rem;
+  }
+
+  .sub.title {
+    font-size: 1.8rem;
   }
 
   .subtitle {

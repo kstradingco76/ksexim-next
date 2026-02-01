@@ -59,10 +59,13 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleLogout = () => {
-    // Clear cookie by setting it to expire in the past
-    document.cookie = "admin_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-    router.push("/admin/login");
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      router.push("/admin/login");
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
   };
 
   const totalPages = Math.ceil(total / limit);

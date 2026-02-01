@@ -55,8 +55,11 @@ const Pcards = () => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      if (!outerRef.current || !containerRef.current || !wrapperRef.current) return;
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+      if (!outerRef.current || !containerRef.current || !wrapperRef.current)
+        return;
 
       const cards = wrapperRef.current.children;
       const totalWidth = Array.from(cards).reduce(
@@ -79,10 +82,10 @@ const Pcards = () => {
           invalidateOnRefresh: true,
         },
       });
-    }, outerRef);
+    });
 
-    // Cleanup via context revert
-    return () => ctx.revert();
+    // Cleanup mm
+    return () => mm.revert();
   }, []);
 
   return (

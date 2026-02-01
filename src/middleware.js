@@ -6,15 +6,26 @@ export async function middleware(request) {
 
   // Paths that require authentication
   if (pathname.startsWith("/admin")) {
-    
-    // Allow login page to pass through
-    if (pathname === "/admin/login") {
-      // Optional: Redirect to /admin if already logged in (can add logic here)
-      return NextResponse.next();
-    }
-
     const token = request.cookies.get("admin_token")?.value;
 
+    // Handle login page specifically
+    if (pathname === "/admin/login") {
+      if (!token) return NextResponse.next();
+
+      try {
+        const secret = new TextEncoder().encode(
+          process.env.JWT_SECRET || "default_secret_key"
+        );
+        await jwtVerify(token, secret);
+        // If token is valid, redirect to dashboard
+        return NextResponse.redirect(new URL("/admin", request.url));
+      } catch (error) {
+        // If token invalid, allow login page
+        return NextResponse.next();
+      }
+    }
+
+    // Protection for all other /admin paths
     if (!token) {
       return NextResponse.redirect(new URL("/admin/login", request.url));
     }
@@ -35,5 +46,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: "/admin/:path*",
+  matcher: ["/admin/:path*", "/admin"],
 };

@@ -22,10 +22,17 @@
 }
 
 /* Logo styling */
-.logo img {
-  margin-top: 30px;
-  width: 120px;
-  height: auto;
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logoImage {
+  width: auto;
+  height: 80px; /* Base height for desktop */
+  object-fit: contain;
+  transition: height 0.3s ease;
 }
 
 /* Links container for large screens */
@@ -71,49 +78,63 @@
 .mobileMenuIcon {
   font-size: 24px;
   cursor: pointer;
-  z-index: 1100;
+  z-index: 1200; /* Above sidebar */
   display: none; /* Hidden by default */
+  color: #333;
+}
+
+/* Backdrop overlay */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  transition: opacity 0.3s ease;
 }
 
 /* Sidebar menu container */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* Initially hidden */
-  width: 250px;
+  left: -280px; /* Initially hidden */
+  width: 280px;
+  max-width: 80%;
   height: 100%;
-  background-color: #333;
-  color: #fff;
-  transition: all 0.3s ease-in-out; /* Smooth slide animation */
-  z-index: 1000;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  color: #333;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1100;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
-  padding: 20px;
+  padding: 80px 20px 20px; /* Space for logo/header if needed */
 }
 
 /* Sidebar links inside the sidebar */
 .sidebarLinks {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 15px;
 }
 
 .sidebarLink {
   text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 10px 15px;
-  border-radius: 4px;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  background-color: #f8f9fa;
 }
 
 .sidebarLink:hover {
-  background-color: #555;
-  color: #ddd;
+  background-color: #e9ecef;
+  color: #27ae60;
+  transform: translateX(5px);
 }
 
 /* When the sidebar is open (slide in from left) */
@@ -133,71 +154,45 @@
 
   .links {
     display: flex; /* Display links horizontally for larger screens */
-    font-size: 20px; /* Increase font size of menu to 20px */
-    gap: 10px; /* Reduce gap between links */
+    font-size: 1rem;
+    gap: 5px;
   }
 }
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
   .container {
-    padding: 10px 15px;
+    padding: 0 1.5rem;
     height: 70px;
   }
 
-  .logo img {
-    margin-top: 20px;
-    width: 100px;
+  .logoImage {
+    height: 60px; /* Smaller for mobile */
   }
 
   .mobileMenuIcon {
-    display: block; /* Show the mobile menu icon on small screens */
-    font-size: 22px;
-  }
-
-  /* Sidebar animation */
-  .sidebar {
-    display: block;
-    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .links {
     display: none; /* Hide links for mobile */
-  }
-
-  .links.show {
-    display: flex; /* Show links when the menu is open */
   }
 }
 
 /* Extra small mobile devices (480px and below) */
 @media (max-width: 480px) {
   .container {
-    padding: 8px 10px;
+    padding: 0 1rem;
     height: 60px;
   }
 
-  .logo img {
-    margin-top: 15px;
-    width: 85px;
-  }
-
-  .mobileMenuIcon {
-    font-size: 20px;
+  .logoImage {
+    height: 50px;
   }
 
   .sidebar {
-    width: 200px;
-    padding: 15px;
-  }
-
-  .sidebarLinks {
-    gap: 8px;
-    margin-top: 15px;
-  }
-
-  .sidebarLink {
-    font-size: 16px;
-    padding: 8px 12px;
+    width: 260px;
   }
 }

@@ -79,13 +79,13 @@ export default function About() {
         </div>
         <h1 className={styles.title}>KAYESS TRADING COMPANY</h1>
         <div className={styles.content}>
-          <div className="text-content left">
-            <p className="text">
+          <div className={`text-content ${styles.left}`}>
+            <p className={styles.text}>
               The history of KS trading co. dates back to 2018 when the promoter
               of this company Mr. Akhil Gupta with his son Mr. Archit gupta
               enter in the Guar Gum Industry at Jalandhar ,Punjab.
             </p>
-            <p className="text">
+            <p className={styles.text}>
               In the year 2018 the first line for supply for Food Grade Guar Gum
               Powder was brought up in a completely new premises,under the
               guidance of well qualified , highly qualified partners under whom
@@ -95,7 +95,7 @@ export default function About() {
               Since then the supply, quality control, warehousing have been
               improved from time to time.
             </p>
-            <p className="text">
+            <p className={styles.text}>
               <b>
                 <i> KS Trading co </i>
               </b>
@@ -106,7 +106,7 @@ export default function About() {
               in the industry. It is always busy developing new and improved
               products for various applications.
             </p>
-            <p className="text">
+            <p className={styles.text}>
               We are the leading{" "}
               <b>
                 {" "}
@@ -118,7 +118,7 @@ export default function About() {
               highly delicate product in good condition for a long time.
             </p>
           </div>
-          <div className="image-content right">
+          <div className={`image-content ${styles.right}`}>
             <Image
               src="/images/avatar.png"
               alt="Avatar"
