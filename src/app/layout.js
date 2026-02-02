@@ -36,6 +36,11 @@ export const metadata = {
     description: "Leading supplier of Guar Gum, Xanthan Gum, and more.",
     images: ["/images/logo.png"],
   },
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
